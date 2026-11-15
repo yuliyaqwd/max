@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "TREX",
+    "slug": "trex",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D1117"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yulika.maxfit"
+    },
+    "android": {
+      "package": "com.yulika.maxfit",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0D1117"
+      }
+    },
+    "backgroundColor": "#0D1117",
+    "icon": "./assets/icon.png",
+    "web": {
+      "favicon": "./assets/icon.png"
+    }
+  }
+}
