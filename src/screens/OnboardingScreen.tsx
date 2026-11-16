@@ -49,6 +49,15 @@ export function OnboardingScreen({ onDone }: { onDone: (p: ProfileInput) => void
   const [error, setError] = useState("");
   const [terms, setTerms] = useState(false);
 
+  const formatBirthDate = (text: string) => {
+    const cleaned = text.replace(/\D/g, '').slice(0, 8); // Только цифры, макс. 8 штук
+    let formatted = '';
+    if (cleaned.length > 0) formatted = cleaned.slice(0, 2);
+    if (cleaned.length >= 3) formatted += '.' + cleaned.slice(2, 4);
+    if (cleaned.length >= 5) formatted += '.' + cleaned.slice(4, 8);
+    return formatted;
+  };
+
   function submit() {
     const h = Number(height.replace(",", "."));
     const w = Number(weight.replace(",", "."));
@@ -77,7 +86,15 @@ export function OnboardingScreen({ onDone }: { onDone: (p: ProfileInput) => void
       <TextInput value={name} onChangeText={setName} placeholder="Имя" placeholderTextColor={COLORS.muted} style={s.input} />
 
       <Text style={s.label}>Дата рождения (необязательно)</Text>
-      <TextInput value={birth} onChangeText={setBirth} placeholder="ДД.ММ.ГГГГ" placeholderTextColor={COLORS.muted} style={s.input} />
+      <TextInput 
+        value={birth} 
+        onChangeText={(text) => setBirth(formatBirthDate(text))}
+        keyboardType="number-pad"                                
+        maxLength={10}                                           
+        placeholder="ДД.ММ.ГГГГ" 
+        placeholderTextColor={COLORS.muted} 
+        style={s.input} 
+      />
 
       <Text style={s.label}>Занимался(ась) тренировками раньше?</Text>
       <View style={s.choiceRow}>
