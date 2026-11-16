@@ -40,10 +40,30 @@ export function Dialog({
 }
 
 const s = StyleSheet.create({
-  backdrop: { flex: 1, backgroundColor: "rgba(5,8,12,0.78)", alignItems: "center", justifyContent: "center", padding: 24 },
-  card: { width: "100%", maxWidth: 420, backgroundColor: COLORS.card, borderRadius: 22, borderWidth: 1, borderColor: COLORS.line, padding: 20 },
+  backdrop: { 
+    flex: 1, 
+    backgroundColor: "rgba(5,8,12,0.78)", 
+    alignItems: "center", 
+    justifyContent: "center", 
+    padding: 24 
+  },
+  card: { 
+    width: "100%", 
+    maxWidth: 420, 
+    maxHeight: "85%", // <-- ДОБАВЛЕНО: ограничивает высоту модалки (85% от экрана)
+    flexShrink: 1,    // <-- ДОБАВЛЕНО: разрешает сжиматься, если контента много (особенно важно для Web)
+    backgroundColor: COLORS.card, 
+    borderRadius: 22, 
+    borderWidth: 1, 
+    borderColor: COLORS.line, 
+    padding: 20 
+  },
   title: { color: COLORS.ink, fontSize: 20, fontWeight: "800" },
-  messageScroll: { maxHeight: "62%", marginTop: 8 },
+  messageScroll: { 
+    flexGrow: 1,      // <-- ИЗМЕНЕНО: занимает всё доступное пространство между заголовком и кнопками
+    marginTop: 8,
+    marginBottom: 8,  // <-- ДОБАВЛЕНО: небольшой отступ от кнопок
+  },
   message: { color: COLORS.muted, fontSize: 15, lineHeight: 22, fontWeight: "500" },
-  actions: { gap: 8, marginTop: 18 },
+  actions: { gap: 8, marginTop: 8 }, // <-- ИЗМЕНЕНО: уменьшен отступ, так как скролл теперь имеет свой margin
 });
